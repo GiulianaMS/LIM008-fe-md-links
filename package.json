@@ -11,7 +11,8 @@
   "license": "MIT",
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "start": "babel-node ./lib/process/process-links"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

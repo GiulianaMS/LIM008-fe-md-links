@@ -1,4 +1,4 @@
-import {checkRouteAbsolute, convertRoute, checkArchive, checkDirectory} from "../lib/process/process-links.js";
+import {checkRouteAbsolute, convertRoute, checkArchive, checkDirectory, getFiles, checkMarkdown} from "../lib/process/process-links.js";
 describe("checkRouteAbsolute",()=>{
     it('Deberia de ser una funcion',()=>{
         expect(typeof checkRouteAbsolute).toBe('function');
@@ -39,4 +39,26 @@ describe("checkDirectory",()=>{
     it('Deberia de verificar si ruta no te lleva a un directorio y retornar false',()=>{
         expect(checkDirectory('C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\test\\links.spec.js')).toBe(false);
     })
+})
+describe("getFiles",()=>{
+    it('Deberia de ser una funcion',()=>{
+        expect(typeof getFiles).toBe('function');
+    })
+    it('Deberia de retornar un array con archivos',()=>{
+        expect(getFiles('./aprueba')).toEqual([ './aprueba/elica/Erickelrojo.md',
+        './aprueba/giuliana.txt',
+        './aprueba/pamela.md' ]);
+    })
+})
+describe("checkMarkdown",()=>{
+    it('Deberia de ser una funcion',()=>{
+        expect(typeof checkMarkdown).toBe('function');
+    })
+    it('Deberia de retornar un array con archivos .md',()=>{
+        expect(checkMarkdown([ './aprueba/elica/Erickelrojo.md',
+        './aprueba/giuliana.txt',
+        './aprueba/pamela.md' ])).toEqual([ './aprueba/elica/Erickelrojo.md',
+        './aprueba/pamela.md' ]);
+    })
+    
 })
