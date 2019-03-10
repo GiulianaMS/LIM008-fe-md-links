@@ -1,5 +1,7 @@
 import {checkRouteAbsolute, convertRoute, checkArchive, checkDirectory, getFiles, checkMarkdown, readMarkdown, getLinks} from '../lib/modules/links/process-links.js';
-import {extractLinks} from '../lib/modules/links/links.js';
+import {validatelinks} from '../lib/modules/validate/validate.js';
+import {showLinks} from '../lib/modules/links/links.js';
+import { ok } from 'assert';
 
 describe('checkRouteAbsolute', () => {
   it('Deberia de ser una funcion', () => {
@@ -82,11 +84,38 @@ describe('getLinks', () => {
     }]);
   });
 });
-describe('extractLinks', () => {
+describe('validatelinks', () => {
   it('Deberia de ser una funcion', () => {
-    expect(typeof extractLinks).toBe('function');
+    expect(typeof validatelinks).toBe('function');
   });
   it('Deberia de retornar un array de objetos con las propiedades de los links', () => {
-    expect(extractLinks('.\aprueba')).toEqual();
+    expect(validatelinks([ { href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: '.\\aprueba2/carpeta1/archivo1.md' },
+    { href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: '.\\aprueba2/prueba1.md' },
+    { href: 'https://nodejs.org/defrefer',
+      text: 'Node.js',
+      file: '.\\aprueba2/prueba1.md' },
+    { href: 'https://seedeffefremver.org/',
+      text: 'Semver',
+      file: '.\\aprueba2/prueba1.md' },
+    { href: 'https://nodejs.org/en/',
+      text: 'Node.js',
+      file: '.\\aprueba2/prueba1.md' }])).toEqual([{ href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: '.\\aprueba2/carpeta1/archivo1.md',
+      status: 200,
+      statusText: 'OK'
+    }]);
+  });
+});
+describe('showLinks', () => {
+  it('Deberia de ser una funcion', () => {
+    expect(typeof showLinks).toBe('function');
+  });
+  it('Deberia de retornar un array de objetos con las propiedades de los links', () => {
+    expect(showLinks('.\\aprueba')).toBe(false);
   });
 });

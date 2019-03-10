@@ -12,7 +12,8 @@
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",
     "test": "jest --coverage",
-    "start": "babel-node ./lib/process/process-links"
+    "start": "babel-node ./lib/process/process-links",
+    "build": "babel lib -d modules"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
