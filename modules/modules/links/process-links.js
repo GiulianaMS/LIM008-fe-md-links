@@ -102,4 +102,3 @@ var getLinks = function getLinks(arrayRoute) {
 };
 
 exports.getLinks = getLinks;
-console.log(getLinks(['.\\aprueba\\pamela.md']));
