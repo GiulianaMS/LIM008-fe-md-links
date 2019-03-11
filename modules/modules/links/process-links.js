@@ -40,12 +40,12 @@ var getFiles = function getFiles(route) {
 
   var getFilesThroughFolders = function getFilesThroughFolders(path, files) {
     fs.readdirSync(path).forEach(function (file) {
-      var subpath = path + '/' + file;
+      var subpath = path + '\\' + file;
 
       if (fs.lstatSync(subpath).isDirectory()) {
         getFilesThroughFolders(subpath, files);
       } else {
-        files.push(path + '/' + file);
+        files.push(path + '\\' + file);
       }
     });
   };

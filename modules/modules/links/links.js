@@ -17,7 +17,8 @@ var showLinks = function showLinks(route) {
   }
 
   if ((0, _processLinks.checkArchive)(absoluteRoute) === true) {
-    arrayFilesMD = (0, _processLinks.checkMarkdown)(absoluteRoute);
+    var arrayProvisional = new Array(absoluteRoute);
+    arrayFilesMD = (0, _processLinks.checkMarkdown)(arrayProvisional);
   } else if ((0, _processLinks.checkDirectory)(absoluteRoute) === true) {
     arrayFiles = (0, _processLinks.getFiles)(absoluteRoute);
     arrayFilesMD = (0, _processLinks.checkMarkdown)(arrayFiles);
@@ -30,4 +31,3 @@ var showLinks = function showLinks(route) {
 };
 
 exports.showLinks = showLinks;
-console.log(showLinks('.\\aprueba2'));

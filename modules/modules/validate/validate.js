@@ -5,13 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.validatelinks = void 0;
 
-var _processLinks = require("../links/process-links.js");
-
 var fetch = require('node-fetch');
 
 var validatelinks = function validatelinks(objectlinks) {
-  var validate = objectlinks.map(function (objLink) {
-    return new Promise(function (resolve) {
+  var arrayPromises = [];
+  objectlinks.map(function (objLink) {
+    var iPromise = new Promise(function (resolve) {
       fetch(objLink.href).then(function (response) {
         if (response.status >= 200 && response.status < 400) {
           objLink.status = response.status;
@@ -28,11 +27,11 @@ var validatelinks = function validatelinks(objectlinks) {
         resolve(objLink);
       });
     });
+    arrayPromises.push(iPromise);
   });
-  return Promise.all(validate);
+  return Promise.all(arrayPromises).then(function (finalResult) {
+    return finalResult;
+  });
 };
 
 exports.validatelinks = validatelinks;
-validatelinks((0, _processLinks.getLinks)((0, _processLinks.checkMarkdown)((0, _processLinks.getFiles)('.\\aprueba2')))).then(function (response) {
-  return console.log(response);
-});
