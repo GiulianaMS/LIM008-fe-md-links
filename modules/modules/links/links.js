@@ -22,8 +22,6 @@ var showLinks = function showLinks(route) {
   } else if ((0, _processLinks.checkDirectory)(absoluteRoute) === true) {
     arrayFiles = (0, _processLinks.getFiles)(absoluteRoute);
     arrayFilesMD = (0, _processLinks.checkMarkdown)(arrayFiles);
-  } else {
-    console.log('Error');
   }
 
   arraylinks = (0, _processLinks.getLinks)(arrayFilesMD);

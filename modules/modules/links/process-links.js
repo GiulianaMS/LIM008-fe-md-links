@@ -63,6 +63,11 @@ var checkMarkdown = function checkMarkdown(files) {
       arrayFilesMd.push(file);
     }
   });
+
+  if (arrayFilesMd.length === 0) {
+    console.log('No se encontro ningún archivo .md');
+  }
+
   return arrayFilesMd;
 };
 
@@ -87,8 +92,8 @@ var getLinks = function getLinks(arrayRoute) {
           arrayLinks.push({
             href: href,
             text: text,
-            file: route,
-            lines: i + 1
+            route: route,
+            line: i + 1
           });
         }
       }
