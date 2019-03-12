@@ -15,11 +15,11 @@ luego fue organizada en un Project en Github para medir tiempos y detallar funci
 
 ### Diagrama de flujo
 
-![Diagrama](./img/diagrama.jpeg)
+![Diagrama](./img/diagrama.jpg)
 
 ### Tablero
 
-![Project](./img/project.jpeg)
+![Project](./img/project.jpg)
 
 ## Guia de uso
 
