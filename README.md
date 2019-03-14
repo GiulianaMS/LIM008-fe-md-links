@@ -21,7 +21,7 @@ luego fue organizada en un Project en Github para medir tiempos y detallar funci
 
 ![Project](./img/project.jpg)
 
-##Especificaciones Técnicas
+## Especificaciones Técnicas
 
 ### Argumentos
 
@@ -66,7 +66,7 @@ Paso 3: Ingresar opción validar = validate como ('--v' o '--validate')
 $ npm install -d
 ```
 
-![Route](./img/validate.jpg)
+![Validate](./img/validate.jpg)
 
 Paso 4: Ingresar opción estadistica = stats como ('--v' o '--validate')
 
@@ -74,7 +74,7 @@ Paso 4: Ingresar opción estadistica = stats como ('--v' o '--validate')
 $ npm install -d
 ```
 
-![Route](./img/stats.jpg)
+![Stats](./img/estadistica.jpg)
 
 Paso 5: Ingresar opción estadistica y validate = stats como ('--v' o '--validate') y ('--s' o '--stats')
 
@@ -82,5 +82,5 @@ Paso 5: Ingresar opción estadistica y validate = stats como ('--v' o '--validat
 $ npm install -d
 ```
 
-![Route](./img/validateStats.jpg)
+![Validate and Stats](./img/validateStats.jpg)
 
