@@ -44,43 +44,74 @@ las siguientes propiedades:
 
 ## Guia de uso
 
-### Instalación
+### Instalación 
 
 Paso 1: Instalar
 
 ```sh
-$ npm install -d
+$ npm install GiulianaMS/LIM008-fe-md-links
 ```
 
-Paso 2: Ingresar ruta
+### Modo consola 
+
+Paso 1: Ingresar ruta
 
 ```sh
-$ npm install -d
+$ md-links ruta  
 ```
 
 ![Route](./img/route.jpg)
 
-Paso 3: Ingresar opción validar = validate como ('--v' o '--validate')
+Paso 2: Ingresar opción validar = validate como ('--v' o '--validate')
 
 ```sh
-$ npm install -d
+$ md-links ruta --v
 ```
 
 ![Validate](./img/validate.jpg)
 
-Paso 4: Ingresar opción estadistica = stats como ('--v' o '--validate')
+Paso 3: Ingresar opción estadistica = stats como ('--v' o '--validate')
 
 ```sh
-$ npm install -d
+$ md-links ruta --s
 ```
 
 ![Stats](./img/estadistica.jpg)
 
-Paso 5: Ingresar opción estadistica y validate = stats como ('--v' o '--validate') y ('--s' o '--stats')
+Paso 4: Ingresar opción estadistica y validate = stats como ('--v' o '--validate') y ('--s' o '--stats')
 
 ```sh
-$ npm install -d
+$ md-links ruta --v --s
 ```
 
 ![Validate and Stats](./img/validateStats.jpg)
 
+### Importar con require
+
+En un archivo llamado ejemplo.js puedes implementar una función parecida a este ejemplo que te muestro a continuación:
+
+Ejemplo:
+
+const mdLinks = require("md-links");
+
+mdLinks("./some/example.md")
+  .then(links => {
+    // => [{ href, text, file }]
+  })
+  .catch(console.error);
+
+mdLinks("./some/example.md", { validate: true })
+  .then(links => {
+    // => [{ href, text, file, status, ok }]
+  })
+  .catch(console.error);
+
+mdLinks("./some/dir")
+  .then(links => {
+    // => [{ href, text, file }]
+  })
+  .catch(console.error);
+
+Resultado: 
+
+![resul](./img/result.jpg)

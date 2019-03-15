@@ -1,27 +1,28 @@
 import {checkRouteAbsolute, convertRoute, checkArchive, checkDirectory, getFiles, checkMarkdown, readMarkdown, getLinks} from '../lib/modules/links/process-links.js';
 import {showLinks} from '../lib/modules/links/links.js';
+const path = require('path');
 const route = 'aprueba2';
-const route2 = 'C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\aprueba2';
+const route2 = path.join(process.cwd(), '\\aprueba2');
 const resultLinks = [ { 
   href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
   route:
- 'C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\aprueba2\\carpeta1\\archivo1.md',
+  path.join(process.cwd(), '\\aprueba2\\carpeta1\\archivo1.md'),
   line: 3 },
 { href: 'https://es.wikipedia.org/wiki/Markdown',
   text: 'Markdown',
   route:
- 'C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\aprueba2\\prueba1.md',
+  path.join(process.cwd(), '\\aprueba2\\prueba1.md'),
   line: 3 },
 { href: 'https://nodejs.org/defrefer',
   text: 'Node.js',
   route:
- 'C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\aprueba2\\prueba1.md',
+  path.join(process.cwd(), '\\aprueba2\\prueba1.md'),
   line: 6 },
 { href: 'https://seedeffefremver.org/',
   text: 'Semver',
   route:
- 'C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\aprueba2\\prueba1.md',
+  path.join(process.cwd(), '\\aprueba2\\prueba1.md'),
   line: 8 } ];
 
 describe('checkRouteAbsolute', () => {
@@ -70,9 +71,9 @@ describe('getFiles', () => {
     expect(typeof getFiles).toBe('function');
   });
   it('Deberia de retornar un array con archivos', () => {
-    expect(getFiles('.\\aprueba')).toEqual([ '.\\aprueba\\elica\\Erickelrojo.md',
-      '.\\aprueba\\giuliana.txt',
-      '.\\aprueba\\pamela.md' ]);
+    expect(getFiles(path.join(process.cwd(), '.\\aprueba'))).toEqual([ path.join(process.cwd(), '\\aprueba\\elica\\Erickelrojo.md'),
+      (path.join(process.cwd(), '\\aprueba\\giuliana.txt')),
+      (path.join(process.cwd(), '\\aprueba\\pamela.md'))]);
   });
 });
 describe('checkMarkdown', () => {
@@ -94,7 +95,7 @@ describe('readMarkdown', () => {
     expect(typeof readMarkdown).toBe('function');
   });
   it('Deberia de retornar un string con el contenido del Markdown', () => {
-    expect(readMarkdown('./aprueba/elica/Erickelrojo.md')).toEqual('# Markdown Links');
+    expect(readMarkdown((path.join(process.cwd(), '\\aprueba\\elica\\Erickelrojo.md')))).toEqual('# Markdown Links');
   });
 });
 describe('getLinks', () => {
@@ -102,9 +103,9 @@ describe('getLinks', () => {
     expect(typeof getLinks).toBe('function');
   });
   it('Deberia de retornar un array de objetos con las propiedades de los links', () => {
-    expect(getLinks(['.\\aprueba/pamela.md'])).toEqual([{href: 'https://es.wikipedia.org/wiki/Markdown',
+    expect(getLinks([path.join(process.cwd(), '\\aprueba\\pamela.md')])).toEqual([{href: 'https://es.wikipedia.org/wiki/Markdown',
       text: 'Markdown',
-      route: '.\\aprueba/pamela.md',
+      route: (path.join(process.cwd(), '\\aprueba\\pamela.md')),
       line: 2
     }]);
   });
@@ -120,11 +121,11 @@ describe('showLinks', () => {
     expect(showLinks(route2)).toEqual(resultLinks);
   });
   it('Deberia de retornar un array de objetos con las propiedades de los links', () => {
-    expect(showLinks('C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\aprueba2\\carpeta1\\archivo1.md')).toEqual([ { 
+    expect(showLinks((path.join(process.cwd(), '\\aprueba2\\carpeta1\\archivo1.md')))).toEqual([ { 
       href: 'https://es.wikipedia.org/wiki/Markdown',
       text: 'Markdown',
       route:
-     'C:\\Users\\DESKTOP\\Documents\\Laboratoria\\LIM008-fe-md-links\\aprueba2\\carpeta1\\archivo1.md',
+      (path.join(process.cwd(), '\\aprueba2\\carpeta1\\archivo1.md')),
       line: 3 }]);
   });
 });

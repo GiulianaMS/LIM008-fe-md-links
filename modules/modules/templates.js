@@ -18,13 +18,13 @@ var templateValidate = function templateValidate(link) {
 exports.templateValidate = templateValidate;
 
 var templateStats = function templateStats(array) {
-  return "Total: ".concat(array[0], "<br/> Unique: ").concat(array[1]);
+  return "Total: ".concat(array[0], " Unique: ").concat(array[1]);
 };
 
 exports.templateStats = templateStats;
 
 var templateStatsValidate = function templateStatsValidate(array) {
-  return "Total: ".concat(array[0], "<br/> Unique: ").concat(array[1], "<br/> Broken: ").concat(array[2]);
+  return "Total: ".concat(array[0], " Unique: ").concat(array[1], " Broken: ").concat(array[2]);
 };
 
 exports.templateStatsValidate = templateStatsValidate;
