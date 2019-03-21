@@ -38,14 +38,14 @@ exports.checkDirectory = checkDirectory;
 var getFiles = function getFiles(route) {
   var files = [];
 
-  var getFilesThroughFolders = function getFilesThroughFolders(path, files) {
-    fs.readdirSync(path).forEach(function (file) {
-      var subpath = path + '\\' + file;
+  var getFilesThroughFolders = function getFilesThroughFolders(route, files) {
+    fs.readdirSync(route).forEach(function (file) {
+      var subRoute = path.resolve(route, file);
 
-      if (fs.lstatSync(subpath).isDirectory()) {
-        getFilesThroughFolders(subpath, files);
+      if (fs.lstatSync(subRoute).isDirectory()) {
+        getFilesThroughFolders(subRoute, files);
       } else {
-        files.push(path + '\\' + file);
+        files.push(path.resolve(route, file));
       }
     });
   };

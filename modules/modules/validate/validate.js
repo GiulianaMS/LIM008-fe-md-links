@@ -9,7 +9,7 @@ var fetch = require('node-fetch');
 
 var validatelinks = function validatelinks(objectlinks) {
   var arrayPromises = [];
-  objectlinks.map(function (objLink) {
+  objectlinks.forEach(function (objLink) {
     var iPromise = new Promise(function (resolve) {
       fetch(objLink.href).then(function (response) {
         if (response.status >= 200 && response.status < 400) {
@@ -23,15 +23,13 @@ var validatelinks = function validatelinks(objectlinks) {
         }
       }).catch(function (error) {
         objLink.status = '';
-        objLink.statusText = 'Not Found';
+        objLink.statusText = 'Fail';
         resolve(objLink);
       });
     });
     arrayPromises.push(iPromise);
   });
-  return Promise.all(arrayPromises).then(function (finalResult) {
-    return finalResult;
-  });
+  return Promise.all(arrayPromises);
 };
 
 exports.validatelinks = validatelinks;

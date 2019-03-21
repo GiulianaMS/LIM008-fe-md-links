@@ -23,7 +23,7 @@ exports.statsLinks = statsLinks;
 var brokeLinks = function brokeLinks(arrayStats, arrayValidate) {
   var arrayBroken = [];
   arrayValidate.forEach(function (link) {
-    if (link.status <= 100 || link.status >= 400 || link.status === '') arrayBroken.push(link);
+    if (link.statusText === 'Fail') arrayBroken.push(link);
   });
   var broken = arrayBroken.length;
   arrayStats.push(broken);
